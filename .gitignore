@@ -1,0 +1,18 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ML Artifacts (ignore model files and datasets)
+models/
+dataset/cleaned_dataset.csv
+dataset/IMDB Dataset.csv
