@@ -12,7 +12,5 @@ __pycache__/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# ML Artifacts (ignore model files and datasets)
-models/
-dataset/cleaned_dataset.csv
+# Only ignore the raw large 50K IMDB dataset (models and cleaned dataset will be pushed for deployment)
 dataset/IMDB Dataset.csv

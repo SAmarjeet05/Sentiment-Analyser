@@ -59,10 +59,10 @@ def build_and_save_pipeline():
     print("[INFO] Cleaning reviews (removing HTML tags, punctuation, and stopwords)...")
     df['cleaned_review'] = df['review'].apply(clean_text)
     
-    # Save a copy of the cleaned dataset for the Streamlit app explorer
+    # Save a 1,000-row sample of the cleaned dataset for the Streamlit app explorer (avoids pushing 100MB+ file to git)
     os.makedirs(os.path.dirname(CLEANED_DATASET_PATH), exist_ok=True)
-    df.to_csv(CLEANED_DATASET_PATH, index=False)
-    print(f"[INFO] Cleaned dataset saved to '{CLEANED_DATASET_PATH}'")
+    df.head(1000).to_csv(CLEANED_DATASET_PATH, index=False)
+    print(f"[INFO] Cleaned dataset sample (1,000 rows) saved to '{CLEANED_DATASET_PATH}'")
     
     # 3. Generating EDA Plots
     print("[INFO] Generating EDA visualizations...")
