@@ -4,11 +4,22 @@ import pickle
 import pandas as pd
 import numpy as np
 
-# Configuration paths matching model.py
-MODEL_PATH = "models/sentiment_model.pkl"
-VECTORIZER_PATH = "models/tfidf_vectorizer.pkl"
-CLEANED_DATASET_PATH = "dataset/cleaned_dataset.csv"
-IMAGES_DIR = "Images"
+# Configuration paths matching model.py with case-sensitivity robustness
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def resolve_path(folder_name, file_name=None):
+    folder_low = os.path.join(BASE_DIR, folder_name.lower())
+    folder_cap = os.path.join(BASE_DIR, folder_name.capitalize())
+    selected_folder = folder_low if os.path.exists(folder_low) else folder_cap
+    if file_name:
+        return os.path.join(selected_folder, file_name)
+    return selected_folder
+
+MODEL_PATH = resolve_path("models", "sentiment_model.pkl")
+VECTORIZER_PATH = resolve_path("models", "tfidf_vectorizer.pkl")
+CLEANED_DATASET_PATH = resolve_path("dataset", "cleaned_dataset.csv")
+IMAGES_DIR = resolve_path("Images")
+
 
 # Page configuration
 st.set_page_config(

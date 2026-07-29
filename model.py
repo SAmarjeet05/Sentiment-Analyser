@@ -13,12 +13,22 @@ from wordcloud import WordCloud
 import nltk
 from nltk.corpus import stopwords
 
-# Configuration
-DATASET_PATH = "dataset/IMDB Dataset.csv"
-CLEANED_DATASET_PATH = "dataset/cleaned_dataset.csv"
-MODEL_PATH = "models/sentiment_model.pkl"
-VECTORIZER_PATH = "models/tfidf_vectorizer.pkl"
-IMAGES_DIR = "Images"
+# Configuration with absolute, case-robust relative paths from __file__
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def resolve_path(folder_name, file_name=None):
+    folder_low = os.path.join(BASE_DIR, folder_name.lower())
+    folder_cap = os.path.join(BASE_DIR, folder_name.capitalize())
+    selected_folder = folder_low if os.path.exists(folder_low) else folder_cap
+    if file_name:
+        return os.path.join(selected_folder, file_name)
+    return selected_folder
+
+DATASET_PATH = resolve_path("dataset", "IMDB Dataset.csv")
+CLEANED_DATASET_PATH = resolve_path("dataset", "cleaned_dataset.csv")
+MODEL_PATH = resolve_path("models", "sentiment_model.pkl")
+VECTORIZER_PATH = resolve_path("models", "tfidf_vectorizer.pkl")
+IMAGES_DIR = resolve_path("Images")
 
 # Download and load NLTK English stopwords
 nltk.download('stopwords', quiet=True)
