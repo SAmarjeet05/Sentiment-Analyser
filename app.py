@@ -20,7 +20,6 @@ VECTORIZER_PATH = resolve_path("models", "tfidf_vectorizer.pkl")
 CLEANED_DATASET_PATH = resolve_path("dataset", "cleaned_dataset.csv")
 IMAGES_DIR = resolve_path("Images")
 
-
 # Page configuration
 st.set_page_config(
     page_title="Sentiment Analyser Dashboard",
