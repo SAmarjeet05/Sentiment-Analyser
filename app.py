@@ -7,7 +7,7 @@ import numpy as np
 # Configuration paths matching model.py
 MODEL_PATH = "models/sentiment_model.pkl"
 VECTORIZER_PATH = "models/tfidf_vectorizer.pkl"
-CLEANED_DATASET_PATH = "dataset/cleaned_dataset.csv"
+CLEANED_DATASET_PATH = "Dataset/cleaned_dataset.csv"
 IMAGES_DIR = "Images"
 
 # Page configuration
