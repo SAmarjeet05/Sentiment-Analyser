@@ -1,5 +1,7 @@
 # 🎭 Sentiment Analyser
 
+🚀 Live Demo: https://sentiment-analyser1.streamlit.app/
+
 An end-to-end sentiment classification application that predicts the positive or negative sentiment of movie reviews. The project features a full machine learning pipeline (text preprocessing, EDA generation, TF-IDF vectorization, and Logistic Regression classification) and exposes it via an interactive, modern Streamlit dashboard.
 
 ---
