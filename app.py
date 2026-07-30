@@ -160,26 +160,29 @@ with tab_inference:
     else:
         st.write("Enter your movie review below or click one of the quick test presets to evaluate its sentiment.")
 
+        # Initialize session state for review input to persist state across clicks
+        if "review_input" not in st.session_state:
+            st.session_state.review_input = ""
+
         # Preset templates
         col_preset1, col_preset2, col_preset3 = st.columns(3)
-        preset_text = ""
         
         with col_preset1:
             if st.button("🌟 Test Positive Review", use_container_width=True):
-                preset_text = "Absolutely phenomenal! The direction was brilliant, the screenplay was engaging, and the emotional resonance kept me hooked till the end credits."
+                st.session_state.review_input = "Absolutely phenomenal! The direction was brilliant, the screenplay was engaging, and the emotional resonance kept me hooked till the end credits."
                 
         with col_preset2:
             if st.button("😡 Test Negative Review", use_container_width=True):
-                preset_text = "What an utter waste of time. The characters were paper thin, the narrative was incredibly slow and boring, and the visual effects were laughably poor."
+                st.session_state.review_input = "What an utter waste of time. The characters were paper thin, the narrative was incredibly slow and boring, and the visual effects were laughably poor."
                 
         with col_preset3:
             if st.button("🤔 Test Sarcastic/Mixed Review", use_container_width=True):
-                preset_text = "It had beautiful cinematography and high production values, but the messy plot and horrible dialogue completely ruined what could have been a decent film."
+                st.session_state.review_input = "It had beautiful cinematography and high production values, but the messy plot and horrible dialogue completely ruined what could have been a decent film."
 
-        # Review text input
+        # Review text input synced with st.session_state
         user_review = st.text_area(
             "Write your movie review here:",
-            value=preset_text,
+            key="review_input",
             height=150,
             placeholder="Type a review..."
         )
